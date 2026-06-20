@@ -1,0 +1,539 @@
+:root {
+  --bg-color: #faf7f2;       /* 温暖麦芽白 */
+  --primary-color: #1b4d3e;  /* 森林绿 */
+  --primary-hover: #12352b;
+  --accent-color: #e76f51;   /* 温和暖橙 */
+  --accent-hover: #cf5e42;
+  --bg-white: #ffffff;
+  --text-main: #1f2723;      /* 高对比度深色 */
+  --text-muted: #56645e;
+  --card-bg: rgba(255, 255, 255, 0.92); /* 偏厚的毛玻璃背景，确保文字高可读性 */
+  --card-border: rgba(27, 77, 62, 0.16);
+  --shadow: 0 10px 30px rgba(27, 77, 62, 0.08);
+  --shadow-hover: 0 15px 40px rgba(27, 77, 62, 0.16);
+  --radius-lg: 20px;
+  --radius-md: 12px;
+  --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans CJK SC", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  font-family: var(--font-family);
+  font-size: 18px; /* 中老年人基础大字号 */
+  line-height: 1.7; /* 适中行高 */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* 头部样式 */
+header {
+  background: linear-gradient(135deg, var(--primary-color) 0%, #2c6e5a 100%);
+  color: var(--bg-color);
+  padding: 60px 0 50px 0;
+  text-align: center;
+  border-bottom: 5px solid var(--accent-color);
+}
+
+header h1 {
+  font-size: 40px; /* 大字号 */
+  font-weight: 800;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+}
+
+header p {
+  font-size: 20px;
+  opacity: 0.95;
+  font-weight: 500;
+}
+
+/* 搜索栏样式 */
+.search-container {
+  max-width: 700px;
+  margin: -35px auto 40px auto;
+  padding: 0 20px;
+  position: relative;
+  z-index: 10;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  background: var(--bg-white);
+  border: 3px solid var(--primary-color);
+  border-radius: 50px;
+  padding: 8px 12px 8px 24px;
+  box-shadow: 0 10px 25px rgba(27, 77, 62, 0.15);
+}
+
+.search-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 18px;
+  color: var(--text-main);
+  padding: 8px 0;
+  background: transparent;
+}
+
+.search-input::placeholder {
+  color: #8c9b94;
+}
+
+.search-icon {
+  font-size: 24px;
+  margin-right: 12px;
+  color: var(--primary-color);
+}
+
+/* 分类小标题样式 */
+.section-title {
+  font-size: 28px;
+  color: var(--primary-color);
+  font-weight: 800;
+  margin-top: 20px;
+  margin-bottom: 24px;
+  text-align: left;
+  border-left: 6px solid var(--accent-color);
+  padding-left: 12px;
+}
+
+/* 卡片列表 */
+.projects-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+  margin-bottom: 60px;
+}
+
+/* 毛玻璃卡片效果与过渡增强 */
+.project-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 3px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  padding: 30px;
+  text-align: left;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 40px rgba(27, 77, 62, 0.18), 0 0 0 1px rgba(27, 77, 62, 0.05);
+  border-color: var(--primary-color);
+}
+
+/* 卡片内头部 */
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 16px;
+  border-bottom: 2px dashed rgba(27, 77, 62, 0.12);
+  padding-bottom: 16px;
+}
+
+.card-title {
+  font-size: 26px; /* 卡片大标题 */
+  color: var(--primary-color);
+  font-weight: 700;
+}
+
+.card-badge {
+  background-color: var(--accent-color);
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: 30px;
+  font-size: 16px;
+  font-weight: 600;
+  box-shadow: 0 4px 10px rgba(231, 111, 81, 0.2);
+}
+
+.card-info-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 16px;
+}
+
+.difficulty-badge {
+  background-color: rgba(27, 77, 62, 0.08);
+  color: var(--primary-color);
+  padding: 4px 12px;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.card-desc {
+  font-size: 18px;
+  color: var(--text-main);
+  margin-bottom: 24px;
+  line-height: 1.8;
+  background-color: rgba(27, 77, 62, 0.03);
+  padding: 16px;
+  border-left: 5px solid var(--primary-color);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+}
+
+/* 按钮样式 */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 28px;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: var(--bg-color);
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+  transform: scale(1.02);
+}
+
+.btn-accent {
+  background-color: var(--accent-color);
+  color: #fff;
+}
+
+.btn-accent:hover {
+  background-color: var(--accent-hover);
+  transform: scale(1.02);
+}
+
+/* 展开区域样式 */
+.card-details {
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 2px dashed rgba(27, 77, 62, 0.12);
+  animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.detail-section {
+  margin-bottom: 24px;
+}
+
+.detail-title {
+  font-size: 20px;
+  color: var(--primary-color);
+  margin-bottom: 12px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* 开源工具标签 */
+.tools-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tool-tag {
+  background-color: rgba(27, 77, 62, 0.08);
+  border: 1px solid rgba(27, 77, 62, 0.15);
+  color: var(--primary-color);
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* 执行步骤列表与对齐修复 */
+.steps-list {
+  list-style: none;
+}
+
+.steps-list li {
+  position: relative;
+  padding-left: 36px;
+  margin-bottom: 14px;
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+/* 使用 top: 0.22em 相对定位，确保用户放大/缩小字体时，打勾图标永远跟第一行文字居中对齐 */
+.steps-list li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 0.22em;
+  width: 24px;
+  height: 24px;
+  background-color: var(--primary-color);
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* 模板代码框 */
+.template-box {
+  background-color: #f5f0e6;
+  border: 2px solid #e1d6c3;
+  border-radius: var(--radius-md);
+  padding: 20px;
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.template-content {
+  font-family: ui-monospace, SFMono-Regular, SF Pro Text, monospace;
+  font-size: 16px;
+  white-space: pre-wrap;
+  word-break: break-all;
+  color: #3d3428;
+  max-height: 350px;
+  overflow-y: auto;
+  line-height: 1.6;
+}
+
+/* 复制按钮 */
+.copy-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background-color: var(--accent-color);
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(231, 111, 81, 0.15);
+  transition: all 0.2s;
+}
+
+.copy-btn:hover {
+  background-color: var(--accent-hover);
+  transform: translateY(-1px);
+}
+
+.copy-btn.copied {
+  background-color: var(--primary-color);
+}
+
+/* 定价策略卡片 */
+.pricing-card {
+  background: linear-gradient(135deg, rgba(231, 111, 81, 0.08) 0%, rgba(231, 111, 81, 0.03) 100%);
+  border: 2px solid rgba(231, 111, 81, 0.25);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  font-size: 17px;
+  color: var(--text-main);
+  white-space: pre-wrap;
+  line-height: 1.7;
+}
+
+/* FAQ 常见问题解答板块样式 */
+.faq-section {
+  background: var(--bg-white);
+  border: 3px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  padding: 35px;
+  margin: 40px 0;
+  box-shadow: var(--shadow);
+}
+
+.faq-main-title {
+  color: var(--primary-color);
+  font-size: 26px;
+  font-weight: 800;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.faq-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.faq-card {
+  background-color: #f7faf8;
+  border-left: 5px solid var(--primary-color);
+  border-radius: 4px var(--radius-md) var(--radius-md) 4px;
+  padding: 20px;
+  text-align: left;
+}
+
+.faq-question {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 8px;
+}
+
+.faq-answer {
+  font-size: 18px;
+  color: var(--text-main);
+  line-height: 1.7;
+}
+
+/* 防坑专区 */
+.anti-trap-section {
+  background: #fff;
+  border: 3px dashed var(--accent-color);
+  border-radius: var(--radius-lg);
+  padding: 35px;
+  margin: 40px 0 80px 0;
+  box-shadow: var(--shadow);
+}
+
+.anti-trap-title {
+  color: var(--accent-color);
+  font-size: 26px;
+  font-weight: 800;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+}
+
+.traps-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+@media (min-width: 768px) {
+  .traps-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.trap-card {
+  background-color: #fff9f6;
+  border: 1px solid rgba(231, 111, 81, 0.2);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  text-align: left;
+}
+
+.trap-header {
+  color: var(--accent-color);
+  font-weight: 700;
+  font-size: 19px;
+  margin-bottom: 8px;
+}
+
+.trap-desc {
+  font-size: 17px;
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+/* 页脚 */
+footer {
+  background-color: var(--primary-color);
+  color: #fff;
+  text-align: center;
+  padding: 30px 0;
+  margin-top: auto;
+  font-size: 16px;
+  opacity: 0.9;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 32px;
+  }
+  header p {
+    font-size: 17px;
+  }
+  .card-title {
+    font-size: 22px;
+  }
+  body {
+    font-size: 17px;
+  }
+  
+  .section-title {
+    font-size: 22px;
+    margin-bottom: 16px;
+  }
+
+  /* 移动端卡片自适应 Padding 调整 */
+  .container {
+    padding: 0 16px; /* 外层容器在移动端减小 padding，扩大实际可用宽度 */
+  }
+  
+  .project-card {
+    padding: 16px; /* 卡片 padding 减小为 16px，增大文字区域 */
+  }
+  
+  .faq-section {
+    padding: 24px 16px;
+  }
+  
+  .faq-card {
+    padding: 16px;
+  }
+  
+  .faq-question {
+    font-size: 18px;
+  }
+  
+  .faq-answer {
+    font-size: 16px;
+  }
+
+  .anti-trap-section {
+    padding: 24px 16px;
+  }
+
+  .copy-btn {
+    position: static;
+    display: block;
+    width: 100%;
+    margin-top: 12px;
+    text-align: center;
+  }
+}
